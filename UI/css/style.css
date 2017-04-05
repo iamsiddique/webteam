@@ -1,0 +1,17 @@
+header .container.customcont{
+	padding-top:140px;
+	padding-bottom:10px;
+}
+.customconttt{
+	padding-top:140px;
+	
+}
+.intro-dash{
+	padding-top:60px;
+}
+.cust-label{
+	font-size: 17px !important;
+	top:0px !important;
+	opacity: 1 !important;
+	color:#999999 !important;
+}

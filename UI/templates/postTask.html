@@ -1,0 +1,63 @@
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Post Project</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label for="name">Project Title</label>
+                                <input type="text" class="form-control" placeholder="Project Title" id="name" required data-validation-required-message="Please enter  name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                       
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label for="message">Description</label>
+                                <textarea rows="5" class="form-control" placeholder="Description" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                       
+                         <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls" style="margin-top:15px;">
+                                <label for="message" class="cust-label">Skills</label>
+                                <tags-input  rows="5" class="form-control" ng-model="tags"></tags-input>
+                                <!-- <textarea rows="5" class="form-control" placeholder="Description" id="message" required data-validation-required-message="Please enter a message."></textarea> -->
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                         <div class="row control-group">
+                            <div class="form-group col-xs-5 floating-label-form-group controls" style="margin-right:15px;">
+                                <label for="message" >Start Date</label>
+                                <input type="text" class="form-control" placeholder="Start Date" id="name" required data-validation-required-message="Please enter  name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        
+                            <div class="form-group col-xs-5 floating-label-form-group controls" style="margin-left:15px;border-left:0;">
+                                <label for="message">End Date</label>
+                                <input type="text" class="form-control" placeholder="End Date" id="name" required data-validation-required-message="Please enter  name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg pull-right">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
