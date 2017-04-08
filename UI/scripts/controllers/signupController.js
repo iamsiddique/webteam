@@ -57,7 +57,16 @@ webTeam.controller("signUpController", ['$rootScope', '$scope', '$location','int
             }
         });
         }
-
+        $scope.getCountries = function(){
+            intermediateService.restCountries(function(response) {
+                
+            
+                console.log(response)
+            
+        });
+        }
+        $scope.getCountries();
+        
 
     }
 ]);

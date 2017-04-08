@@ -1,4 +1,4 @@
-var webTeam = angular.module("webteam", ["ngRoute","ngTagsInput"]);
+var webTeam = angular.module("webteam", ["ngRoute","ngTagsInput","ui.bootstrap"]);
 //'webcam','bcQrReader'
 webTeam.config(function($routeProvider) {
     $routeProvider
@@ -15,15 +15,15 @@ webTeam.config(function($routeProvider) {
            templateUrl: "UI/templates/signin.html"
         })
         .when("/employerDashboard", {
-           //controller: 'signUpController',
+           controller: 'employerDashboard',
            templateUrl: "UI/templates/employerDashboard.html"
         })
         .when("/postTask", {
-           //controller: 'signUpController',
+           controller: 'jobPostController',
            templateUrl: "UI/templates/postTask.html"
         })
         .when("/employeeDashboard", {
-           //controller: 'signUpController',
+           controller: 'employeeDashboard',
            templateUrl: "UI/templates/employeeDashboard.html"
         })
         .when("/profile", {

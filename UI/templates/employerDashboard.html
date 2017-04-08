@@ -1,18 +1,85 @@
 <div ng-include src="'UI/templates/header.html'"></div>
 <header>
-        <div class="container customcont" id="maincontent" tabindex="-1">
-            <div class="row">
-                <div class="col-lg-12">
+    <div class="container customcont" id="maincontent" tabindex="-1">
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="col-lg-3">
                     <img class="img-responsive" src="UI/images/profile.png" alt="">
                 </div>
-                
-                    <div class="col-lg-9 text-left intro-dash">
-                        <h2 class="name">Start Bootstrap</h1>
+                <div class="col-lg-9 text-left intro-dash">
+                    <h2 class="name">Start Bootstrap</h1>
                         
                         <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
                     </div>
                 </div>
+                <a href="#/postTask">
+                 <button type="submit" class="btn btn-primary btn-lg pull-right" >Post Jobs</button></a>
             </div>
         </div>
     </header>
+            <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>List Of Projects</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 portfolio-item" ng-repeat="list in listofJobs">
+                    <a data-target="#portfolioModal1" ng-click="showModal(list)" ; class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="UI/images/portfolio/cabin.png" class="img-responsive" alt="Cabin">
+                    </a>
+                    <div class="text-center">
+                        <h4 ng-bind="list.job.taskName"></h4></div>
+                </div>
+            </div>
+        </div>
+        </section>
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="modal-body">
+                                <h2 ng-bind="modaldata.job.taskName"></h2>
+                                <hr class="star-primary">
+                                <img src="UI/images/portfolio/cabin.png" class="img-responsive img-centered" alt="">
+                                <p ng-bind="modaldata.job.taskDescription"></p>
+                                <ul class="list-inline item-details">
+                                    <li>Client:
+                                        <strong><a ng-bind="modaldata.job.master.fullName"></a>
+                                    </strong>
+                                    </li>
+                                    <li>Start Date:
+                                        <strong><a ng-bind="modaldata.job.taskStartDate | date: 'MM/dd/yyyy'"></a>
+                                    </strong>
+                                    </li>
+                                    <li>End Date:
+                                        <strong><a ng-bind="modaldata.job.taskEndDate | date: 'MM/dd/yyyy'"></a>
+                                    </strong>
+                                    </li>
+                                    <br/>
+                                    <br/>
+                                    <li>Skills:
+                                        <strong ng-repeat="sk in modaldata.skills"><a ng-bind="sk.skill"></a>,</strong>
+                                    </li>
+                                </ul>
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

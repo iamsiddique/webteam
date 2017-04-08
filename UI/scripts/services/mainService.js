@@ -19,6 +19,26 @@ webTeam.config(function($httpProvider) {
 		    return $http.post($rootScope.urlBase+ 'worker/save', data, $rootScope.header);		    
 		    
 		};
+		dataFetch.skillsList = function() {
+		    return $http.get($rootScope.urlBase+ 'secure/skill/list', $rootScope.header);		    
+		    
+		};
+		dataFetch.jobList = function() {
+		    return $http.get($rootScope.urlBase+ 'secure/job/list', $rootScope.header);		    
+		    
+		};
+		dataFetch.jobListMaster = function(id) {
+		    return $http.get($rootScope.urlBase+ 'secure/job/list' + id, $rootScope.header);		    
+		    
+		};
+		dataFetch.postJob = function(data) {
+		    return $http.post($rootScope.urlBase+ 'secure/job/post',data, $rootScope.header);		    
+		    
+		};
+		dataFetch.restCountries = function() {
+		    return $http.get('https://restcountries.eu/rest/v2/all', $rootScope.header);		    
+		    
+		};
 		
 		return dataFetch;
 		
