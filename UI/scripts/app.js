@@ -11,7 +11,7 @@ webTeam.config(function($routeProvider) {
            templateUrl: "UI/templates/signup.html"
         })
         .when("/signIn", {
-           //controller: 'signUpController',
+           controller: 'signinController',
            templateUrl: "UI/templates/signin.html"
         })
         .when("/employerDashboard", {
