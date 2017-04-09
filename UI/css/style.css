@@ -15,3 +15,6 @@ header .container.customcont{
 	opacity: 1 !important;
 	color:#999999 !important;
 }
+.bgcolor input{
+	background: none !important;
+}

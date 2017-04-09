@@ -54,15 +54,21 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label for="name">Company Name</label>
-                            <input type="text" class="form-control" placeholder="Company Name" id="name" required data-validation-required-message="Please enter your name.">
+                            <input type="text" class="form-control" ng-model="emplr.companyName" placeholder="Company Name" id="name" required data-validation-required-message="Please enter your name.">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls bgcolor">
+                            <label for="name">Country</label>
+                            <input type="text" class="form-control autocomplete" style="background-color:none;" ng-model="emplr.country" uib-typeahead="product as product.name for product in products | filter:{name:$viewValue}" placeholder="Country" required="" typeahead-show-hint="true" typeahead-min-length="0">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label for="email">Email Address</label>
-                            <input type="email" class="form-control" ng-model="emplr.companyEmail" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-                            <p class="help-block text-danger"></p>
+                            <input type="email" class="form-control" ng-model="emplr.companyEmail" placeholder="Email Address" id="email" required >
                         </div>
                     </div>
                     <div class="row control-group">
@@ -101,22 +107,28 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" ng-model="emplr.fullName" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                            <input type="text" class="form-control" ng-model="emple.fullName" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
-                    
+                     <div class="row control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls bgcolor">
+                            <label for="name">Country</label>
+                            <input type="text" class="form-control autocomplete" style="background-color:none;" ng-model="emple.country" uib-typeahead="product as product.name for product in products | filter:{name:$viewValue}" placeholder="Country" required="" typeahead-show-hint="true" typeahead-min-length="0">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label for="email">Email Address</label>
-                            <input type="email" class="form-control" ng-model="emplr.emailId" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                            <input type="email" class="form-control" ng-model="emple.emailId" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" ng-model="emplr.user.password" placeholder="Password" id="email" required data-validation-required-message="Please enter your email address.">
+                            <input type="password" class="form-control" ng-model="emple.user.password" placeholder="Password" id="email" required data-validation-required-message="Please enter your email address.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>

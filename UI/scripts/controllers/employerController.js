@@ -1,11 +1,18 @@
-webTeam.controller("employerDashboard", ['$rootScope', '$scope', '$location', 'intermediateService','$filter',
-    function($rootScope, $scope, $location, intermediateService,$filter) {
-        
+webTeam.controller("employerDashboard", ['$rootScope', '$scope', '$location', 'intermediateService', '$filter',
+    function($rootScope, $scope, $location, intermediateService, $filter) {
+        $rootScope.itIsLog = true;
         $scope.listofJobs = [];
         $scope.jobslist = function() {
-            id = 1;
-            intermediateService.jobListMaster(id,function(response) {
-
+            if (localStorage.getItem('userLoggedin') !== null) {
+                var currentUser = JSON.parse(localStorage.getItem('userLoggedin'));
+                console.log(currentUser[0]);
+                id = currentUser[0].master;
+                $scope.masterobj = currentUser[0].data;
+            }
+            
+            
+            intermediateService.jobListMaster(id, function(response) {
+                console.log('called');
                 if (response.statusCode == 1) {
                     $scope.listofJobs = response.data;
                     console.log(response);
@@ -15,11 +22,12 @@ webTeam.controller("employerDashboard", ['$rootScope', '$scope', '$location', 'i
             });
         }
         $scope.jobslist();
-       
-        $scope.showModal = function(data){
+
+        $scope.showModal = function(data) {
             console.log(data);
             $scope.modaldata = data;
         }
+
 
     }
 ]);

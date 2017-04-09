@@ -4,13 +4,18 @@ webTeam.config(function($httpProvider) {
 })
 .factory('mainService',['$http','$rootScope',function($http, $rootScope) {
 
-		//$rootScope.urlBase = 'http://166.62.40.162:8080/a2z/';
 		$rootScope.urlBase = 'http://localhost:8080/webteam_rest/';
 		$rootScope.header = {header: { "Content-type" : "application/json","Accept" : "application/json" }};
-		$rootScope.uploadheader = { headers : { 'Content-Type' : undefined } };
-
+		
 		var dataFetch = {};
+		dataFetch.tokens = {};
 
+		dataFetch.tokenUpdate = function(data){
+			$rootScope.secureheader ={};			
+			dataFetch.tokens = data;			
+			$rootScope.secureheader = { headers: { "Content-type" : "application/json","token":dataFetch.tokens.token,"user":dataFetch.tokens.user }};
+			console.log($rootScope.secureheader);
+		}
 		dataFetch.emplrSignup = function(data) {
 		    return $http.post($rootScope.urlBase+'master/save', data, $rootScope.header);		    
 		    
@@ -20,42 +25,52 @@ webTeam.config(function($httpProvider) {
 		    
 		};
 		dataFetch.skillsList = function() {
-		    return $http.get($rootScope.urlBase+ 'secure/skill/list', $rootScope.header);		    
+		    return $http.get($rootScope.urlBase+ 'secure/skill/list', $rootScope.secureheader);		    
 		    
 		};
 		dataFetch.jobList = function() {
-		    return $http.get($rootScope.urlBase+ 'secure/job/list', $rootScope.header);		    
+			console.log($rootScope.secureheader);
+		    return $http.get($rootScope.urlBase+ 'secure/job/list', $rootScope.secureheader);		    
 		    
 		};
 		dataFetch.jobListMaster = function(id) {
-		    return $http.get($rootScope.urlBase+ 'secure/job/list' + id, $rootScope.header);		    
+			console.log($rootScope.secureheader);
+		    return $http.get($rootScope.urlBase+ 'secure/job/list/' + id, $rootScope.secureheader);		    
 		    
 		};
 		dataFetch.postJob = function(data) {
-		    return $http.post($rootScope.urlBase+ 'secure/job/post',data, $rootScope.header);		    
+		    return $http.post($rootScope.urlBase+ 'secure/job/post',data, $rootScope.secureheader);		    
 		    
 		};
 		dataFetch.restCountries = function() {
 		    return $http.get('https://restcountries.eu/rest/v2/all', $rootScope.header);		    
 		    
 		};
+		dataFetch.signIn = function(data) {
+		    return $http.post($rootScope.urlBase+ 'user/login',data, $rootScope.header);		    
+		    
+		};  
+		dataFetch.logout = function(id) {
+		    return $http.get($rootScope.urlBase+ 'user/logout/' + id, $rootScope.header);		    
+		    
+		};       
 		
 		return dataFetch;
 		
 }])
-// .factory('logCheck',['$http','$rootScope',function($http, $rootScope) {
+.factory('logCheck',['$http','$rootScope',function($http, $rootScope) {
 
 		
-// 		var credentialFetch = {};
+		var credentialFetch = {};
 
-// 		credentialFetch.checkUser = function(callback) {
+		credentialFetch.checkUser = function() {
 			
-// 			if (localStorage.getItem('userLoggedin') !== null) {
-//     	var currentUser = JSON.parse(localStorage.getItem('userLoggedin'));
-//     	console.log(currentUser[0].password);
-//     	callback(currentUser);
-//     	} 
+		if (localStorage.getItem('userLoggedin') !== null) {
+    	var currentUser = JSON.parse(localStorage.getItem('userLoggedin'));
+    	console.log(currentUser[0]);
+    	return currentUser[0];
+    	} 
 		    
-// 		};
-// 		return credentialFetch;
-// }]);
+		};
+		return credentialFetch;
+}]);

@@ -1,5 +1,6 @@
 webTeam.controller("jobPostController", ['$rootScope', '$scope', '$location', 'intermediateService','$filter',
     function($rootScope, $scope, $location, intermediateService,$filter) {
+        $rootScope.itIsLog = true;
         $scope.job = {};
         $scope.products = [];
         $scope.skilslist = function() {
@@ -32,12 +33,17 @@ webTeam.controller("jobPostController", ['$rootScope', '$scope', '$location', 'i
                        
         }
         $scope.post = function(){
+            if (localStorage.getItem('userLoggedin') !== null) {
+                var currentUser = JSON.parse(localStorage.getItem('userLoggedin'));
+                console.log(currentUser[0]);
+                id = currentUser[0].master;
+            }
             data = {};
             data.taskName = $scope.job.taskName;
             data.taskDescription = $scope.job.taskDescription;
             data.jobSkills = [];
             data.master = {};
-            data.master.id = 1;
+            data.master.id = id;
             data.jobSkills = $scope.jobSkills;
             data.taskStartDate = $filter('date')($scope.job.taskStartDate, "yyyy-MM-dd");
             data.taskEndDate = $filter('date')($scope.job.taskEndDate, "yyyy-MM-dd");
@@ -53,6 +59,10 @@ webTeam.controller("jobPostController", ['$rootScope', '$scope', '$location', 'i
                 }
             });
                        
+        }
+        $scope.cancel =function(){
+            $scope.job = {};
+            $location.path('/employerDashboard');
         }
         $scope.today = function() {
             $scope.job.taskStartDate = new Date();

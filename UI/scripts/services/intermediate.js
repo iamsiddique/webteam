@@ -39,7 +39,7 @@ webTeam.factory('intermediateService', ['$rootScope', 'mainService', function($r
     };
     serviceObject.jobListMaster = function(id,callback) {
         
-        mainService.jobList(id).success(function(response) {
+        mainService.jobListMaster(id).success(function(response) {
             callback(response);
         }).error(function(response) {
             callback(response);
@@ -61,9 +61,27 @@ webTeam.factory('intermediateService', ['$rootScope', 'mainService', function($r
             callback(response);
         });
     };
+    serviceObject.signIn = function(data,callback) {
+        
+        mainService.signIn(data).success(function(response) {
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    serviceObject.logout = function(id,callback) {
+        
+        mainService.logout(id).success(function(response) {
+            callback(response);
+        }).error(function(response) {
+            callback(response);
+        });
+    };
+    serviceObject.tokenUpdate = function(data) {
+        
+        mainService.tokenUpdate(data)
+    };
     
-
-
 
     return serviceObject;
 

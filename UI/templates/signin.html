@@ -19,14 +19,14 @@
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label for="name">User Name</label>
-                            <input type="text" class="form-control" placeholder="User Name" id="name" required data-validation-required-message="Please enter your name.">
+                            <input type="text" class="form-control" ng-model="userName" placeholder="User Name" id="name" required data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="row control-group">
                         <div class="form-group col-xs-12 floating-label-form-group controls">
                             <label for="name">Password</label>
-                            <input type="password" class="form-control" placeholder="Password" id="name" required data-validation-required-message="Please enter your name.">
+                            <input type="password" class="form-control" ng-model="password" placeholder="Password" id="name" required data-validation-required-message="Please enter your name.">
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -36,9 +36,14 @@
                     <div id="success"></div>
                     <div class="row">
                         <div class="form-group col-xs-12">
-                            <button type="submit" class="btn btn-primary btn-lg pull-right">Submit</button>
+                        <a class="btn btn-danger btn-circle login-sc-btn" ng-click="login()"
+                                > <i id="gplusLoginBtn"
+                                class="social-icons-size fa fa-google-plus"></i><span></span>
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg pull-right" ng-click="empleesignIn()">Submit</button>
                         </div>
                     </div>
+                    
                 
             </div>
         </div>
