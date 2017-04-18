@@ -11,25 +11,14 @@ webTeam.controller("signinController", ['$rootScope', '$scope', '$location','int
                 }
                // / $location.path('/employerDashboard');
             }
-    	$scope.login = function () {
-        GooglePlus.login().then(function (authResult) {
-            console.log(authResult);
  
-            GooglePlus.getUser().then(function (user) {
-                console.log(user);
-                
-            });
-        }, function (err) {
-            console.log(err);
-        });
-    };
      $rootScope.itIsLog = false;
-        $scope.empleesignIn = function() {
-            var obj = {
-                "userName": $scope.userName,
-                "password": $scope.password
-            }
-            intermediateService.signIn(obj, function(response) {
+
+
+$scope.empleesignInWithParam = function(obj) {
+console.log('test123');
+console.log(obj);
+  intermediateService.signIn(obj, function(response) {
 
                 if (response.statusCode == 1) {
                     console.log(response);  
@@ -46,20 +35,20 @@ webTeam.controller("signinController", ['$rootScope', '$scope', '$location','int
                     }
                                     
                     $scope.credentials = [{
-                    	"token": response.data.token,
-                    	"user": userid,
+                        "token": response.data.token,
+                        "user": userid,
                         "master": masterid,
                         "data" : data
                     }];
                     localStorage.setItem('userLoggedin', JSON.stringify($scope.credentials));
                     //$rootScope.loginPage=true;
                     if(response.data.user.role == "M"){
-                    	$location.path('/employerDashboard');
-                    	$scope.LoggedInUser = response.data;
+                        $location.path('/employerDashboard');
+                        $scope.LoggedInUser = response.data;
                     }
                     else if(response.data.user.role == "W"){
-                    	$location.path('/employeeDashboard');
-                    	$scope.LoggedInUser = response.data;
+                        $location.path('/employeeDashboard');
+                        $scope.LoggedInUser = response.data;
                     }
                     intermediateService.tokenUpdate($scope.credentials[0]);
                 } else if (response.statusCode == 0) {
@@ -69,7 +58,45 @@ webTeam.controller("signinController", ['$rootScope', '$scope', '$location','int
                     // },2000);
                 }
             });
+}
+        $scope.empleesignIn = function() {
+            
+            var obj = {
+                "userName": $scope.userName,
+                "password": $scope.password
+            }
+            $scope.empleesignInWithParam(obj);
+          
         }
+
+            $scope.login = function () {
+            console.log('gplus called');
+        GooglePlus.login().then(function (authResult) {
+            console.log(authResult);
+ 
+            GooglePlus.getUser().then(function (user) {
+                console.log('success');
+                console.log(user);
+                var emplr = {user: {password:user.id}, fullName:user.name, country:"", emailId:user.id};
+                   intermediateService.empleSignup(emplr, function(response) {
+               var obj = {
+                "userName": user.id,
+                "password": user.id
+            }  
+            if(response.statusCode == 1){
+               
+            $scope.empleesignInWithParam(obj);
+                
+            }
+            else if (response.statusCode == 3) {
+                $scope.empleesignInWithParam(obj);
+            }
+        });
+            });
+        }, function (err) {
+            console.log(err);
+        });
+    };
 
 
     }
