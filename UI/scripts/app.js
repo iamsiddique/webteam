@@ -45,8 +45,8 @@ webTeam.config(function($routeProvider) {
 });
 webTeam.config(['GooglePlusProvider', function(GooglePlusProvider) {
      GooglePlusProvider.init({
-        clientId: '590215744992-lgahiclsdc0sgah8edt6vnul5trievj6.apps.googleusercontent.com',
-        apiKey: 'AIzaSyDrcij_KcB_pj-8HKTFLpuMVfyjg2_LwmU'
+        clientId: '349883272421-seke2ql3vf150oh49d896dsakl9f9ghv.apps.googleusercontent.com',
+        apiKey: 'AIzaSyDTRJRCuzQHpqK1mKANaS9vKlhHio_ChlI'
      });
 }]);
 webTeam.run(['logCheck', '$rootScope', function(logCheck, $rootScope) {

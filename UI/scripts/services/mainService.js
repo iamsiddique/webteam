@@ -4,7 +4,7 @@ webTeam.config(function($httpProvider) {
 })
 .factory('mainService',['$http','$rootScope',function($http, $rootScope) {
 
-		$rootScope.urlBase = 'http://localhost:8080/webteam_rest/';
+		$rootScope.urlBase = 'http://localhost:8383/webteam_rest/';
 		$rootScope.header = {header: { "Content-type" : "application/json","Accept" : "application/json" }};
 		
 		var dataFetch = {};
